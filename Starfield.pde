@@ -1,4 +1,4 @@
-Particle[] p = new Particle[50];
+Particle[] p = new Particle[100];
 void setup()
 {
 	size(500, 500);
@@ -19,6 +19,14 @@ void draw()
 		p[i].show();
 	}
 }
+void mousePressed()
+{
+	for (int i = 2; i < p.length; i++)
+	{
+		((NormalParticle)p[i]).getSpeed();
+		((NormalParticle)p[i]).speed = ((NormalParticle)p[i]).speed + 300;
+	}
+}
 class NormalParticle implements Particle
 {
 	double x, y, angle, speed;
@@ -35,11 +43,27 @@ class NormalParticle implements Particle
 	{
 		x = x + Math.cos(angle*speed);
 		y = y + Math.sin(angle*speed);
+		if (x > 500 || x < 0)
+		{
+			x = Math.random()*500;
+			angle = Math.PI*2*Math.random();
+			speed = Math.random()*10;
+		}
+		if (y > 500 || y < 0)
+		{
+			y = Math.random()*500;
+			angle = Math.PI*2*Math.random();
+			speed = Math.random()*10;
+		}
 	}
 	public void show()
 	{
 		fill(c);
 		ellipse((int)x, (int)y, 5, 5);
+	}
+	public double getSpeed()
+	{
+		return speed;
 	}
 }
 interface Particle
@@ -64,6 +88,18 @@ class OddballParticle implements Particle
 	{
 		x = x + (int)(Math.random()*5)-2;
 		y = y + (int)(Math.random()*5)-2;
+		if (x > 500 || x < 0)
+		{
+			x = Math.random()*500;
+			angle = Math.PI*2*Math.random();
+			speed = Math.random()*10;
+		}
+		if (y > 500 || y < 0)
+		{
+			y = Math.random()*500;
+			angle = Math.PI*2*Math.random();
+			speed = Math.random()*10;
+		}
 	}
 	public void show()
 	{
