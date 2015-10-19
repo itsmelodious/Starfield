@@ -19,13 +19,12 @@ void draw()
 		p[i].show();
 	}
 }
-void mousePressed()
+void mouseClicked()
 {
 	for (int i = 2; i < p.length; i++)
 	{
 		((NormalParticle)p[i]).getSpeed();
-		((NormalParticle)p[i]).speed = ((NormalParticle)p[i]).speed + 300;
-		((NormalParticle)p[i]).angle = Math.PI*2*Math.random();
+		((NormalParticle)p[i]).speed = ((NormalParticle)p[i]).speed + (Math.random()*200)+100;
 	}
 }
 class NormalParticle implements Particle
