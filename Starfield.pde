@@ -25,6 +25,7 @@ void mousePressed()
 	{
 		((NormalParticle)p[i]).getSpeed();
 		((NormalParticle)p[i]).speed = ((NormalParticle)p[i]).speed + 300;
+		((NormalParticle)p[i]).angle = Math.PI*2*Math.random();
 	}
 }
 class NormalParticle implements Particle
